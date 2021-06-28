@@ -9,7 +9,4 @@ RUN cd / &&\
 	/usr/bin/python3 -m pip install sqlalchemy &&\
 	/usr/bin/python3 -m pip install mariadb &&\
 	/usr/bin/python3 -m pip install streamlit &&\ 
-	/usr/local/bin/docker-entrypoint.sh &&\ 
 	chmod +x /data/init_db.sh &&\ 
-	/data/init_db.sh
-CMD /usr/bin/python3 -m streamlit run /data/ufo_mariadb.py

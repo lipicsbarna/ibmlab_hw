@@ -1,5 +1,7 @@
 #!/bin/bash
 
+/usr/local/bin/docker-entrypoint.sh
+
 echo "create database ufo" | mariadb --user=root --password=my-secret-pw
 
 sql="
@@ -85,3 +87,4 @@ sql="
 "
 echo ${sql} | mariadb --user=root --password=my-secret-pw
 
+/usr/bin/python3 -m streamlit run /data/ufo_mariadb.py
