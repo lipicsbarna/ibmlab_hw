@@ -1,6 +1,11 @@
 #!/bin/bash
 
-/usr/local/bin/docker-entrypoint.sh
+mv ./ibmlab_hw ./data &&\
+/usr/bin/python3 -m pip install pandas &&\
+/usr/bin/python3 -m pip install sqlalchemy &&\
+/usr/bin/python3 -m pip install mariadb &&\
+/usr/bin/python3 -m pip install streamlit &&\
+chmod +x /data/init_db.sh &&\
 
 echo "create database ufo" | mariadb --user=root --password=my-secret-pw
 
