@@ -1,6 +1,6 @@
 FROM mariadb:latest
 
-RUN cd /
+RUN cd / &&\
 	apt-get update &&\
 	apt-get install -y git libmariadb3 libmariadb-dev python3 pip &&\
 	git clone https://github.com/lipicsbarna/ibmlab_hw &&\
