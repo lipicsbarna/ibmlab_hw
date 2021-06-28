@@ -2,7 +2,7 @@ FROM mariadb:latest
 
 RUN cd /
 RUN apt-get update
-RUN apt-get install -y git python3.9
+RUN apt-get install -y git python3.9 pip
 RUN git clone https://github.com/lipicsbarna/ibmlab_hw
 RUN mv ./ibmlab_hw ./data
 RUN /usr/bin/python3.9 -m pip install pandas
