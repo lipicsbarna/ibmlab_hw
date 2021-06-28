@@ -3,7 +3,7 @@ FROM mariadb:latest
 ENV MARIADB_ROOT_PASSwORD="my-secret-pw"
 RUN cd /
 RUN apt-get update
-RUN apt-get install -y git python3.9 pip libmariadb3 libmariadb-dev
+RUN apt-get install -y git python3.9-dev pip libmariadb3 libmariadb-dev
 RUN git clone https://github.com/lipicsbarna/ibmlab_hw
 RUN mv ./ibmlab_hw ./data
 RUN /usr/bin/python3.9 -m pip install pandas
