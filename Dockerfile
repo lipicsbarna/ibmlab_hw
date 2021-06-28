@@ -1,11 +1,10 @@
 FROM mariadb:latest
 
-RUN mkdir /data
-cd /data
+RUN cd /
 RUN apt-get update
 RUN apt-get install git python3.9
-RUN cd
-RUN git clone 
+RUN git clone https://github.com/lipicsbarna/ibmlab_hw
+RUN mv ./ibmlab_hw ./data
 RUN /usr/bin/python -m pip install pandas
 RUN /usr/bin/python -m pip install sqlalchemy
 RUN /usr/bin/python -m pip install mariadb
