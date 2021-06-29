@@ -54,7 +54,7 @@ if len(chosen_indexes) > 0:
 
 conditions = dict()
 for index in chosen_indexes:
-	_value = st.text_input(index, 'condition')
+	_value = st.text_input(index, '=')
 	conditions.update({index: _value })
 st.write("If you would like to, feel free to add free where condition here:")
 free_condition = st.text_input("your free condition", '')
