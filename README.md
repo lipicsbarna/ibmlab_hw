@@ -15,11 +15,6 @@ docker run -p 127.0.0.1:3306:3306 --expose=3501 --name ufos -e MARIADB_ROOT_PASS
 
 docker exec -it ufos bash -c "apt-get update;apt-get install -y git;cd /;git clone https://github.com/lipicsbarna/ibmlab_hw;mv /ibmlab_hw /data;chmod +x /data/init_db.sh;/data/init_db.sh"
 
-git clone https://github.com/lipicsbarna/ibmlab_hw
-
-docker build -t ufo $PATH_TO_REPO
-
-docker run ufo -p 8501:8501
 
 In a browser, type:
 http://localhost:8501/
