@@ -10,7 +10,7 @@ So please, if you have docker installed, run these commands.
 docker pull mariadb
 
 
-docker run -i -p 127.0.0.1:3501:3501 --name ufos -e MARIADB_ROOT_PASSWORD=my-secret-pw -d mariadb bash
+docker run -p 127.0.0.1:3306:3306 --expose=3501 --name ufos -e MARIADB_ROOT_PASSWORD=my-secret-pw -d mariadb
 
 
 docker exec -it ufos bash -c "apt-get update;apt-get install -y git;cd /;git clone https://github.com/lipicsbarna/ibmlab_hw;mv /ibmlab_hw /data;chmod +x /data/init_db.sh;/data/init_db.sh"
