@@ -1,7 +1,7 @@
 #!/bin/bash
 
-apt-get install -y python3 pip
-pip install pandas sqlalchemy streamlit
+apt-get install -y python3-dev pip libmariadb3 libmariadb-dev 
+pip install pandas sqlalchemy streamlit mariadb
 
 
 echo "create database ufo" | mariadb --user=root --password=my-secret-pw
@@ -38,6 +38,7 @@ echo ${sql} | mariadb --user=root --password=my-secret-pw
 echo "Loaded data to ext_table"
 
 sql="
+ use ufo;
  CREATE TABLE ufos (
   date_time datetime DEFAULT NULL,
   city text DEFAULT NULL,
@@ -62,7 +63,7 @@ echo "Created ufo table"
 
 sql="
  use ufo;
- insert into ufos2 (
+ insert into ufos (
   date_time,
   city,
   state,
@@ -89,6 +90,7 @@ sql="
   date_posted,
   latitude,
   longitude
+  from ext_ufos;
   ;
 "
 echo ${sql} | mariadb --user=root --password=my-secret-pw
