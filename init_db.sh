@@ -1,13 +1,11 @@
 #!/bin/bash
 
-mv ./ibmlab_hw ./data &&\
-/usr/bin/python3 -m pip install pandas &&\
-/usr/bin/python3 -m pip install sqlalchemy &&\
-/usr/bin/python3 -m pip install mariadb &&\
-/usr/bin/python3 -m pip install streamlit &&\
-chmod +x /data/init_db.sh &&\
+apt-get install -y python3 pip
+pip install pandas sqlalchemy streamlit
+
 
 echo "create database ufo" | mariadb --user=root --password=my-secret-pw
+echo "Created database named ufo."
 
 sql="
 use ufo;
@@ -26,6 +24,7 @@ create table ext_ufos (
 )
 "
 echo ${sql} | mariadb --user=root --password=my-secret-pw
+echo "Created table."
 
 sql="
 use ufo;
@@ -36,6 +35,7 @@ lines terminated BY '\n'
 ignore 1 lines
 "
 echo ${sql} | mariadb --user=root --password=my-secret-pw
+echo "Loaded data to ext_table"
 
 sql="
  CREATE TABLE ufos (
@@ -58,6 +58,7 @@ sql="
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 "
 echo ${sql} | mariadb --user=root --password=my-secret-pw
+echo "Created ufo table"
 
 sql="
  use ufo;
@@ -91,5 +92,6 @@ sql="
   ;
 "
 echo ${sql} | mariadb --user=root --password=my-secret-pw
+echo "Table is ready"
 
 /usr/bin/python3 -m streamlit run /data/ufo_mariadb.py
